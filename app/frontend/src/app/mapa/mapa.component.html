@@ -1,0 +1,7 @@
+<div>
+  <button class="btn btn-primary" (click)="adicionarPino()">Adicionar Pino</button>
+</div>
+<div id="map" class="mt-4"></div>
+<agm-map [latitude]="-18.92406700" [longitude]="-48.28214200" [zoom]="15" style="height: 400px;">
+  <agm-marker *ngFor="let rota of rotas" [latitude]="rota.latitude" [longitude]="rota.longitude"></agm-marker>
+</agm-map>

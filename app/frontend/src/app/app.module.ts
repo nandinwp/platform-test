@@ -6,11 +6,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from "@angular/router";
-
+import { WebrotaComponent } from './webrota/webrota.component';
+import { MapaComponent } from './mapa/mapa.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    WebrotaComponent,
+    MapaComponent
   ],
   imports: [
     BrowserModule,

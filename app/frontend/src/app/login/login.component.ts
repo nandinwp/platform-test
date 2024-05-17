@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService} from "../auth.service";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthService } from "../auth.service";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -9,17 +11,22 @@ import { AuthService} from "../auth.service";
 export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
+  loginMessage: string = '';
 
-   constructor(private authService: AuthService) { }
+  @Output() loginResult = new EventEmitter<string>();
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit(username: string, password: string) {
     this.authService.login(username, password).subscribe(response => {
-        console.log('Login bem-sucedido:', response);
+      this.loginResult.emit('Login bem-sucedido!');
+      this.router.navigate(['/maps']);
     }, error => {
-        console.error('Erro no login:', error);
+      this.loginResult.emit('Erro no login: ' + error.message);
+      console.log(error.message);
     });
   }
+
   ngOnInit() {
   }
-
 }
